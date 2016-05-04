@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html> <body>
+<p align="center">Contact List<br></p>
+Name:<br><input type="text" id="name"><br> 
+Address:<br><input type="text" id="address"><br> 
+Email:<br><input type="text" id="email"><br> 
+Contact #:<br><input  type="number" id="contact"><br> 
+<button onclick="submit()">Add</button>
+<button onclick="search()">Search</button>
+<p id="contactt"></p>
+<script>
+var person = [];
+var i = 0;
+function submit(){
+    name = document.getElementById("name").value;
+    add = document.getElementById("address").value;
+    mail = document.getElementById("email").value;
+    con = document.getElementById("contact").value;
+    function PPerson(name, address, email, contact){
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.contact = contact;
+    }
+    person[i] = new PPerson(name, add, mail, con);
+    document.getElementById("name").value = "";
+    document.getElementById("address").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("contact").value = "";
+    document.getElementById("contactt").innerHTML = "Contact added: " +person[i].name;
+    i++;
+}
+function search(){
+    document.getElementById("contactt").innerHTML = "";
+    find = prompt("Enter name:");
+    for(var c = 0; c<person.length; c++){
+        if (person[c].name.split('').join('').toLowerCase().replace(/\s+/g, '') == find.split('').join('').toLowerCase().replace(/\s+/g, '')){
+            alert("Name: "+ person[c].name+ "\nAddress: "                   +person[c].address + "\nEmail: "+ person[c].email              +"\nContact: "+ person[c].contact );
+        }
+    }
+}
+</script> </body> </html>
